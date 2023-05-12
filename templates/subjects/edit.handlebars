@@ -1,20 +1,20 @@
-<h1>Create a new subject</h1>
+<h1>Edit a {{subject.name}}</h1>
 
-<form action="/subjects" method="POST">
+<form action="/subjects/{{subject._id}}?_method=PUT" method="POST">
     {{!-- Name --}}
 <div>
     <label for="">Name</label>
-    <input type="text" class="form-control" name="name">
+    <input type="text" class="form-control" name="name" value="{{subject.name}}">
 </div>
     {{!-- Code --}}
 <div>
     <label for="">Code</label>
-    <input type="text" class="form-control" name="code">
+    <input type="text" class="form-control" name="code" value="{{subject.code}}">
 </div>
  {{!-- Pre_requisite --}}
     <div>
         <label for="">Pre_requisite</label>
-        <input type="text" class="form-control" name="Pre_requisite">
+        <input type="text" class="form-control" name="pre_requisite" value="{{subject.pre_requisite}}">
 
     </div>
     {{!-- Depatment --}}
