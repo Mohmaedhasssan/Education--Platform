@@ -13,5 +13,6 @@ password : {
     type : String,
     required: true,
 },
+
 }, { timestamps:true});
 export default model('doctor',doctor);

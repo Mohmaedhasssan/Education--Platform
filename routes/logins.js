@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { index,store } from '../controllers/logins.js';
+import { index, store } from '../controller/login.js';
 
 
 const router = new Router();
@@ -7,6 +7,9 @@ const router = new Router();
 
 router.get('/', index);
 router.post('/', store);
+
+
+
 
 
 
