@@ -1,12 +1,11 @@
+import pdf from "../model/pdf.js";
 import pre from "../model/pre.js";
 import student from "../model/student.js";
 import subject from "../model/subject.js";
 
 export const index = async (req, res) => { 
     const id = req.cookies._id
-    console.log(id)
     const the_student = await student.findById(id).lean()
-    console.log(the_student)
     res.render('students/index',{the_student})
 };
 export const register_page = async (req, res) => {
@@ -26,12 +25,7 @@ export const register_page = async (req, res) => {
     res.render('students/register' , {subject :allSubjects , the_student :singleStudent })
 
 };
-export const upload_page = async (req, res) => {
-    let cookie = req.cookies._id;
-    const singleStudent = await student.findOne({_id:cookie}).lean();
-    res.render('students/upload' , { the_student :singleStudent })
 
-};
 export const student_register1 = async (req, res) => { 
     const id = req.cookies._id
     const {registered_subjects1 } = req.body;    
@@ -399,7 +393,7 @@ export const student_register5 = async (req, res) => {
 };
 export const student_register6 = async (req, res) => { 
     const id = req.cookies._id
-    const {registered_subjects1: registered_subjects6 } = req.body;    
+    const { registered_subjects6 } = req.body;    
     const find_pre_requisite = await pre.findOne({subject_id : registered_subjects6}).lean() //this is the object of the Pre_requisite
     
     const the_student = await student.findById(id) // this is the object of the student
@@ -469,4 +463,27 @@ export const student_register6 = async (req, res) => {
         res.send("You can't register this subject")
     }
     }
+};
+export const show = async (req, res) => {
+    let cookie = req.cookies._id;
+    const singleStudent = await student.findOne({_id:cookie}).populate({path: 'registered_subjects1',select:'name code department Pre_requisite doctor',})
+    .populate({path: 'registered_subjects2',select:'name code department Pre_requisite doctor',}).populate({path: 'registered_subjects3',select:'name code department Pre_requisite doctor',})
+    .populate({path: 'registered_subjects4',select:'name code department Pre_requisite doctor',}).populate({path: 'registered_subjects5',select:'name code department Pre_requisite doctor',})
+    .populate({path: 'registered_subjects6',select:'name code department Pre_requisite doctor',}).lean();
+    res.render('students/subjects' , { the_student :singleStudent })
+
+};
+export const download = async (req, res) => {
+    const  id  = req.params;
+    const sub = await subject.findOne({_id:id}).lean()
+        const all_pdf = await pdf.find({subject_id:id}).lean()
+    res.render('students/materials',{all_pdf ,sub })
+};
+
+export const pdf_download = async (req, res) => {
+    const  id  = req.params;
+    const the_pdf_object = await pdf.findById(id).lean()
+    var the_pdf_name = the_pdf_object.pdf1
+
+    res.download("./templates/uploads/"+the_pdf_name )
 };

@@ -62,7 +62,6 @@ export const add_student = async (req, res) => {
 export const edit_departments = async (req, res) => {
     const singleDepartment = await department.find().lean();
     const { id } = req.params;
-    console.log(id)
     const the_department = await department.findById(id).lean();
     res.render('admins/edit_departments', { department: singleDepartment, the_department })
 };
@@ -144,12 +143,19 @@ export const edit_subjects = async (req, res) => {
 };
 export const update_subject = async (req, res) => {
 
-    const { name, code, the_new_pre,department,doctor } = req.body;
+    var { name, code, the_new_pre,department,doctor } = req.body;
     const { id } = req.params;
-
-    await subject.findByIdAndUpdate(id, { $set: { name, code,department,doctor } })
-    if (the_new_pre === "none") {
-
+    const the_subject_obj = await subject.findOne({_id: id}).lean()
+    if(department === undefined){  department =the_subject_obj.department  };
+    if(doctor === undefined){  doctor =the_subject_obj.doctor };
+    console.log(name)
+    console.log(code)
+    console.log(the_new_pre)
+    console.log(department)
+    console.log(doctor)
+    
+    if (the_new_pre === undefined) {
+        await subject.findByIdAndUpdate(id, { $set: { name, code,department,doctor } })
         res.redirect('/admins/subjects')
     }else {
     const the_pre_object = await pre.findOne({subject_id: id}).lean()
@@ -317,7 +323,6 @@ export const show_all_subjects = async (req, res) => {
 
 export const show_Students = async (req, res) => {
     const { _id } = req.params;
-    console.log(_id);
     const singleSubject = await subject.findById(_id).lean();
     const the_students1 = await student.find({registered_subjects1: _id}).lean();
     const the_students2 = await student.find({registered_subjects2: _id}).lean();
@@ -326,7 +331,6 @@ export const show_Students = async (req, res) => {
     const the_students5 = await student.find({registered_subjects5: _id}).lean();
     const the_students6 = await student.find({registered_subjects6: _id}).lean();
     let array = the_students1.concat(the_students2).concat(the_students3).concat(the_students4).concat(the_students5).concat(the_students6)
-    console.log(array)
 
     
     res.render('admins/show_all_students', { subject: singleSubject , students :array })
