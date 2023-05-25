@@ -14,32 +14,7 @@ const pdf = new Schema(
             type: String,
             required: false,
         },
-        pdf2_name: {
-            type: String,
-            required: false,
-        },
-        pdf3_name: {
-            type: String,
-            required: false,
-        },
-        pdf4_name: {
-            type: String,
-            required: false,
-        },
         pdf1: {
-            type: String,
-            required: false,
-        },
-        
-        pdf2: {
-            type: String,
-            required: false,
-        },
-        pdf3: {
-            type: String,
-            required: false,
-        },
-        pdf4: {
             type: String,
             required: false,
         },
