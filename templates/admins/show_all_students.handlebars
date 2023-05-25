@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<style>
+<html lang="en">
+    <style>
     * {
         padding: 0;
         margin: 0;
@@ -391,142 +391,54 @@
         background-attachment: fixed;
     }
 </style>
-
-
-
-
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="description" content="project software 2 ibn elhaythm website" />
-    <title>ibn elhytham</title>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
 <body>
+   <div class="container">
+  <br>
+    <div class="d-flex justify-content-between">
+  <h1 style="font-size: 60px;color: #2f1dd3;"> Students List</h1> <br><br>
+  <div>
+    <form action="/admins/show_all_subjects" >
+      <button type="submit" class="btn btn-light" style="font-size: 160%;">Back</button>
+      </form>
+  </div>
+  </div>
+    </div>
+</section>
 
-    <header>
+    <section class="accountDocSection" id="select student passed subjects">
+        <form class="accountDocForm container" >
         
-        <a href="#" class="logo">Adminstrator</a>
-        <form action="/logins">
-            <button  type="submit" class="btn btn-warning" style="font-size: 160%;" >Log out</button>
-           </form>
-        <nav class="navigation" >
-            <a href="#Add Department" style="font-size: 25px;">Add a Department</a>
-            <a href="#Add subject"style="font-size: 25px;">Add subject</a>
-            <a href="#Create account for doctor"style="font-size: 25px;">Create account for doctor</a>
-            <a href="#Create account for student"style="font-size: 25px;">Create account for student</a>
-            <a href="/admins/show_all_subjects"style="font-size: 25px;">Subjects List</a>
-            
-            
-
-        </nav>
-    </header>
-    <section class="main">
-        <div>
-
-            <h2> HELLO Admin</h2>
-
-        </div>
-    </section>
-
-
-    <section class="Department" id="Add Department">
-        <form class="DepartmentForm" action="/admins/add_department" method="post">
-            <h3 class="titleForm">Add Department</h3>
-            <input name="name" type="text" placeholder="Department Name">
-            <input name="code" type="text" placeholder="Department Code">
-            <input type="submit">
+            {{#each students}}
+            <div class="d-flex justify-content-between">
+            <label style="font-size: 30px; color: #ffffff;" > {{name}} </label><br>
             <div>
-                <a href="/admins/departments" style="font-size: xx-large;">Show all departments</a>
+                <input type="checkbox" name="" id="" style="width: 30px; height:30px;">
             </div>
-
-        </form>
-    </section>
-    <section class="accountDocSection" id="Create account for doctor">
-        <form class="accountDocForm" action="/admins/add_doctor" method="post">
-            <h3 class="titleCreateAccouuntD">create account for doctor</h3>
-            <input name="doctor_name" type="text" placeholder="name">
-            <input name="doctor_username" type="text" placeholder="username">
-            <input name="doctor_password" type="text" placeholder="password">
-            <input type="submit">
-            <div>
-                <a href="/admins/doctors" style="font-size: xx-large;">Show all Doctor</a>
             </div>
-            {{!-- class="UND" --}}
-
+                    {{/each}}
         </form>
 
 
     </section>
-
-
-    <section class="accountStuSection" id="Create account for student">
-        <form class="accountStuForm" action="/admins/add_student" method="post">
-            <h3 class="titleCreateAccouuntS">Create account for student</h3>
-            <input name="student_name" class="UNS" type="text" placeholder="name">
-            <input name="student_username" class="UNS" type="text" placeholder="username">
-            <input name="student_password" class="UNS" type="text" placeholder="password">
-            <input name="student_academic_number" class="UNS" type="text" placeholder="academic_number">
-            <div>
-                <select name="department" id="">
-                    {{#each department}}
-                    <option value="{{_id}}">{{name}}</option>
-                    {{/each}}
-
-                </select>
-            </div><br>
-
-            <input type="submit" value="create">
-            <div>
-                <a href="/admins/students" style="font-size: xx-large;">Show all Students</a>
-            </div>
-
-
-        </form>
-    </section>
-
-    <section class="AddSubjectSection" id="Add subject">
-        <form class="AddSabjectForm" action="/admins/add_subject" method="post">
-            <h3 class="titleAddSubject">Add subject</h3>
-            <input name="name" class="subjectName" type="text" placeholder="subject Name">
-            <input name="code" class="subjectCode" type="text" placeholder="subject Code">
-            <div>
-                <select name="Pre_requisite" id="">
-                     <option value="none" selected >None</option>
-                    {{#each subject}}
-                    <option value="{{_id}}">{{name}}</option>
-                    {{/each}}
-
-                </select>
-            </div>
-<br>
-            <div>
-                <select name="department" id="">
-                    {{#each department}}
-                    <option value="{{_id}}">{{name}}</option>
-                    {{/each}}
-
-                </select>
-            </div>
-<br>
-            <div>
-                <select name="doctor" id="">
-                    {{#each doctor}}
-                    <option value="{{_id}}">{{name}}</option>
-                    {{/each}}
-
-                </select>
-            </div>
-
-            <input type="submit" value="Add">
-             <div>
-                <a href="/admins/subjects" style="font-size: xx-large;">Show all Subjects</a>
-            </div>
-        </form>
-
-    </section>
+    
+<br> <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
 
 </body>
-
 </html>
+ 
