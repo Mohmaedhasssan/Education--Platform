@@ -1,127 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <style>
-    *{
-    font-family: 'Poppins', sans-serif;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-body {
-   
-    background: url("upload.jpg");
-    
-
-  }
-  form{
-    width:700px;
-    height: 200px;
-    border: 1px solid #111d24;
-    border-radius: 50px;
-    margin: 170px auto;
-  }
-  h2{
-    color: #fa6807;
-    font-weight: bold;
-    font-size: 60px;
-    text-align: center;
-
-  }
-
-
-input[type=submit] {
-    width: 30%;
-    height: 40px;
-    margin-left: 300px;
-    border: 1px solid #161111;
-    color: #161010;
-    font-size: 25px;
- 
-    outline: none;
-  }
-  
-  input[type=file] {
-    width: 70%;
-    height: 40px;
-    background-color: #84d3fa;
-    color: white;
-    padding: 14px 14px;
-    margin: 8px ;
-    cursor: pointer;
-  }
-  body{
-    background-color: hsl(225, 2%, 67%);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-  label{
-    color: #fa6807;
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
-  }
-  @media (max-width:1023px){
-    header{
-        padding: 12px 20px;
-    }
-
-    .navigation a{
-        padding-left: 10px;
-    }
-
-    .title{
-        font-size: 1.8em;
-    }
-
-    section{
-        padding: 80px 20px;
-    }
-
-    .main-content h2{
-        font-size: 1em;
-    }
-
-    .main-content h3{
-        font-size: 1.6em;
-    }
-
-    .content{
-        flex-direction: column;
-        align-items: center;
-    }
-
-}
-
-@media (max-width:641px){
-    body{
-        font-size: 12px;
-    }
-
-    .main-content h2{
-        font-size: 0.8em;
-    }
-
-    .main-content h3{
-        font-size: 1.4em;
-    }
-}
-
-@media (max-width:300px){
-    body{
-        font-size: 10px;
-     
-    }
-}
-  </style>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="upload.css">
+    <link rel="stylesheet" href="/Style/uploadStudents.css">
 
 </head>
 <body>
@@ -130,7 +15,7 @@ input[type=submit] {
 
 
 <form action="/action_page.php">
-    <h2 >Download a file</h2>
+    <h2 >upload a file</h2>
 
   <label for="myfile">Select a file:</label>
   <input type="file" id="myfile" name="myfile"><br><br>
